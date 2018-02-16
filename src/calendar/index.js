@@ -68,6 +68,7 @@ class Calendar extends Component {
     disabledByDefault: PropTypes.bool,
     // Show week numbers. Default = false
     showWeekNumbers: PropTypes.bool,
+    weekNumbersHeaderText: PropTypes.string
   };
 
   constructor(props) {
@@ -247,6 +248,7 @@ class Calendar extends Component {
           monthFormat={this.props.monthFormat}
           hideDayNames={this.props.hideDayNames}
           weekNumbers={this.props.showWeekNumbers}
+          weekNumbersHeaderText={this.props.weekNumbersHeaderText}
         />
         {weeks}
       </View>);

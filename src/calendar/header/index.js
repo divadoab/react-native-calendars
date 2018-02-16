@@ -16,7 +16,8 @@ class CalendarHeader extends Component {
     firstDay: PropTypes.number,
     renderArrow: PropTypes.func,
     hideDayNames: PropTypes.bool,
-    weekNumbers: PropTypes.bool
+    weekNumbers: PropTypes.bool,
+    weekNumbersHeaderText: PropTypes.string
   };
 
   constructor(props) {
@@ -98,7 +99,7 @@ class CalendarHeader extends Component {
         {
           !this.props.hideDayNames &&
           <View style={this.style.week}>
-            {this.props.weekNumbers && <Text allowFontScaling={false} style={this.style.dayHeader}></Text>}
+            {this.props.weekNumbers && <Text allowFontScaling={false} style={this.style.dayHeader}>{this.props.weekNumbersHeaderText || 'w'}</Text>}
             {weekDaysNames.map((day, idx) => (
               <Text allowFontScaling={false} key={idx} style={this.style.dayHeader} numberOfLines={1}>{day}</Text>
             ))}
