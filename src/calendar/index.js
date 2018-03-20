@@ -68,7 +68,11 @@ class Calendar extends Component {
     disabledByDefault: PropTypes.bool,
     // Show week numbers. Default = false
     showWeekNumbers: PropTypes.bool,
-    weekNumbersHeaderText: PropTypes.string
+    weekNumbersHeaderText: PropTypes.string,
+    // Handler which gets executed when press arrow icon left. It receive a callback can go back month
+    onPressArrowLeft: PropTypes.func,
+    // Handler which gets executed when press arrow icon left. It receive a callback can go next month
+    onPressArrowRight: PropTypes.func
   };
 
   constructor(props) {
@@ -204,7 +208,7 @@ class Calendar extends Component {
   }
 
   renderWeekNumber (weekNumber) {
-    return <Day key={`week-${weekNumber}`} theme={this.props.theme} state='disabled'>{weekNumber}</Day>;
+    return <Day key={`week-${weekNumber}`} theme={this.props.theme} marking={{disableTouchEvent: true}} state='disabled'>{weekNumber}</Day>;
   }
 
   renderWeek(days, id) {
@@ -249,6 +253,8 @@ class Calendar extends Component {
           hideDayNames={this.props.hideDayNames}
           weekNumbers={this.props.showWeekNumbers}
           weekNumbersHeaderText={this.props.weekNumbersHeaderText}
+          onPressArrowLeft={this.props.onPressArrowLeft}
+          onPressArrowRight={this.props.onPressArrowRight}
         />
         {weeks}
       </View>);
